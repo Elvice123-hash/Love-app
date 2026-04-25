@@ -17,16 +17,18 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Build web app
+             - name: Build web app
         run: npm run build
-      - name: Sync Capacitor 
-+_
--name:Add android Platform
--run:npx cap ad android
+
+      - name: Add Android platform
+        run: npx cap add android
+
+      - name: Sync Capacitor
         run: npx cap sync android
+
       - name: Build APK
-        run: cd android &&./gradlew assembleDebug
+        run: cd android && ./gradlew assembleDebug
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: love-app
-          path: android/app/build/outputs/apk/debug/app-debug.apk
