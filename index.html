@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Notes</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+   .card {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px 20px;
+      margin: 20px auto;
+      max-width: 500px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+    #message {
+      font-size: 1.3rem;
+      line-height: 1.6;
+      min-height: 100px;
+      margin-bottom: 25px;
+    }
+    button {
+      background: white;
+      color: #ff5e8a;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 5px;
+    }
+    select {
+      padding: 10px;
+      border-radius: 20px;
+      border: none;
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>💌 Love Notes</h1>
+    <select id="category">
+      <option value="all">All Messages</option>
+      <option value="morning">Good Morning</option>
+      <option value="night">Good Night</option>
+      <option value="miss">I Miss You</option>
+      <option value="appreciation">Appreciation</option>
+    </select>
+    <div id="message">Tap the button for a love note...</div>
+    <button onclick="newMessage()">New Message</button>
+    <button onclick="copyMessage()">Copy ❤️</button>
+     <button onclick="shareWhatsApp()">Share on WhatsApp</button>
+</div>
+  <script src="app.js"></script>
+</body>
+</html>
