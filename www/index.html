@@ -3,53 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Love Days</title>
+  <title>Love App Kenya</title>
   <style>
-    body { 
-      background: linear-gradient(135deg, #ff758c, #ff7eb3); 
-      color: white; font-family: system-ui, sans-serif; 
-      text-align: center; margin: 0; height: 100vh; 
-      display: flex; flex-direction: column; justify-content: center; padding: 20px;
-    }
-    h1 { font-size: 2rem; margin-bottom: 5px; }
-    #days { font-size: 4rem; font-weight: bold; margin: 20px 0; }
-    #date { font-size: 1rem; opacity: 0.9; }
-    input, button { 
-      padding: 12px; border: none; border-radius: 10px; 
-      margin: 10px; font-size: 1rem; 
-    }
-    button { background: white; color: #ff758c; font-weight: bold; }
+    body { font-family: sans-serif; margin: 0; background: #ff0066; color: white; }
+    .box { background: white; color: black; padding: 20px; border-radius: 10px; margin: 20px; text-align: center; }
+    input { padding: 12px; width: 80%; margin: 10px 0; font-size: 16px; border: 2px solid #ff0066; border-radius: 8px; }
+    button { padding: 14px 28px; background: #00c853; color: white; border: none; border-radius: 8px; font-size: 18px; font-weight: bold; }
+    .feature { background: #fff; color: #333; padding: 15px; margin: 10px; border-radius: 10px; text-align: left; }
+    .feature h3 { margin: 0 0 10px 0; color: #ff0066; }
+    .tab { display: inline-block; padding: 10px 20px; background: #ff3385; margin: 5px; border-radius: 20px; }
   </style>
 </head>
 <body>
-  <h1>❤️ We've been together</h1>
-  <div id="days">0</div>
-  <p>Days of Love</p>
-  <p id="date"></p>
-  <input type="date" id="startDate">
-  <button onclick="setDate()">Set Anniversary</button>
-  
-  <script>
-    function setDate() {
-      const date = document.getElementById('startDate').value;
-      if(date) {
-        localStorage.setItem('loveDate', date);
-        updateDays();
-      }
-    }
+  <div id="lock" class="box">
+    <h2>🔒 LOVE APP KENYA</h2>
+    <p><b>HAIJALIPIWA</b></p>
+    <p>Lipa KSh 100 kwa M-Pesa</p>
+    <h3>0116624621</h3>
+    <p>Tuma screenshot WhatsApp upate Code</p>
+    <input id="code" placeholder="Weka Code Hapa">
+    <br><br>
+    <button onclick="unlock()">Fungua App</button>
+    <p id="error" style="color:red;"></p>
+  </div>
+
+  <div id="app" style="display:none; padding: 15px;">
+    <h1 style="text-align: center;">❤️ KARIBU LOVE APP</h1>
+    <p style="text-align: center;">Asante kwa kulipa! Furahia features kali:</p>
     
-    function updateDays() {
-      const saved = localStorage.getItem('loveDate');
-      if(saved) {
-        const start = new Date(saved);
-        const today = new Date();
-        const diff = Math.floor((today - start) / (1000 * 60 * 60 * 24));
-        document.getElementById('days').innerText = diff;
-        document.getElementById('date').innerText = `Since ${start.toDateString()}`;
-        document.getElementById('startDate').value = saved;
+    <div class="tab">💬 Chat</div>
+    <div class="tab">❤️ Match</div>
+    <div class="tab">🎁 Zawadi</div>
+
+    <div class="feature">
+      <h3>💕 PATA MPENZI WA KARIBU</h3>
+      <p>Unganishwa na wasichana/wavulana 5KM karibu nawe Bungoma, Kakamega, Kitale.</p>
+      <button onclick="alert('Feature inakuja! Tuma maoni 0116624621')">Tafuta Sasa</button>
+    </div>
+
+    <div class="feature">
+      <h3>🔥 CHAT ZA SIRI</h3>
+      <p>Tuma ujumbe zinajifuta baada ya kusomwa. 100% Private.</p>
+      <button onclick="alert('Chat inakuja v2! Lipa tena upate update')">Anza Chat</button>
+    </div>
+
+    <div class="feature">
+      <h3>🎮 PICHA ZA MAPENZI</h3>
+      <p>Pata nukuu na picha za kimapenzi kila siku.</p>
+      <button onclick="alert('Hekaya tamu zinakuja!')">Fungua Hekaya</button>
+    </div>
+
+    <div class="feature">
+      <h3>📞 MSAAADA 24/7</h3>
+      <p>Una shida? Piga/WhatsApp: <b>0116624621</b></p>
+      <button onclick="window.location.href='https://wa.me/254116624621'">Piga ELVICE</button>
+    </div>
+
+    <p style="text-align: center; margin-top: 30px; font-size: 12px;">Love App Kenya v1.0 | Made by ELVICE</p>
+  </div>
+
+  <script>
+    if(localStorage.getItem('paid') === 'yes') {
+      document.getElementById('lock').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+    }
+    function unlock() {
+      var code = document.getElementById('code').value;
+      var codes = ['LOVE2026', 'KENYA100', 'ELVICE1', 'PAID'];
+      if(codes.includes(code.toUpperCase())) {
+        localStorage.setItem('paid', 'yes');
+        document.getElementById('lock').style.display = 'none';
+        document.getElementById('app').style.display = 'block';
+      } else {
+        document.getElementById('error').innerText = 'Code si sahihi. Lipa 0116624621';
       }
     }
-    updateDays();
   </script>
 </body>
 </html>
