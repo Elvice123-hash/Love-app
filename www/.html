@@ -51,7 +51,6 @@
       cursor: pointer;
       margin: 10px 0;
     }
-    button:hover { background: #f0f0f0; }
     .app-features { display: none; }
     .feature-btn {
       background: rgba(255,255,255,0.2);
@@ -78,12 +77,12 @@
     
     <div class="pay-info">
       <strong>LIPA KUFUNGUA APP</strong><br>
-      M-Pesa: 0712 345 678<br>
+      M-Pesa: 254116624621<br>
       Kiasi: Ksh 200<br>
       Baada ya kulipa, tuma WhatsApp
     </div>
     
-    <a href="https://wa.me/254712345678?text=Nimelipa%20Love%20App.%20Naomba%20code" target="_blank">
+    <a href="https://wa.me/254116624621?text=Nimelipa%20Love%20App.%20Naomba%20code" target="_blank">
       <button>Lipa Sasa Via WhatsApp</button>
     </a>
     
@@ -105,16 +104,15 @@
   </div>
 
   <script>
-    // BADILISHA CODE HII
+    // BADILISHA CODE HAPA UKITAKA
     const SECRET_CODE = "LOVE2026";
     
-    // Cheki kama alisha-unlock
     if(localStorage.getItem('appUnlocked') === 'yes'){
       showApp();
     }
 
     function unlockApp(){
-      const code = document.getElementById('codeInput').value;
+      const code = document.getElementById('codeInput').value.trim();
       if(code === SECRET_CODE){
         localStorage.setItem('appUnlocked', 'yes');
         showApp();
@@ -133,22 +131,21 @@
       location.reload();
     }
 
-    // FEATURES ZA UONGO - UNAWEZA KUUNGANISHA NA ZEGO/Agora BAADAE
     function startVideoCall(){
-      alert('📹 Video Call Inaanza...\n\nUnganisha na ZegoCloud/Agora SDK hapa');
+      alert('📹 Video Call Inaanza...\n\nTutaanika ZegoCloud hapa baadaye');
     }
     
     function startAudioCall(){
-      alert('📞 Audio Call Inaanza...\n\nUnganisha na ZegoCloud/Agora SDK hapa');
+      alert('📞 Audio Call Inaanza...\n\nTutaanika ZegoCloud hapa baadaye');
     }
     
     function openChat(){
-      alert('💬 Chat Inafunguka...\n\nUnganisha na Firebase/Socket.io hapa');
+      alert('💬 Chat Inafunguka...\n\nTutaanika Firebase hapa baadaye');
     }
     
     function findMatch(){
-      alert('💕 Tunatafuta Match...\n\nOngeza database ya users hapa');
+      alert('💕 Tunatafuta Match...\n\nOngeza database hapa baadaye');
     }
   </script>
 </body>
-      </html>
+</html>
