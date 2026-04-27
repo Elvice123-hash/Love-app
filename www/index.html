@@ -8,7 +8,8 @@
     body { font-family: sans-serif; margin: 0; background: #ff0066; color: white; }
     .box { background: white; color: black; padding: 20px; border-radius: 10px; margin: 20px; text-align: center; }
     input { padding: 12px; width: 80%; margin: 10px 0; font-size: 16px; border: 2px solid #ff0066; border-radius: 8px; }
-    button { padding: 14px 28px; background: #00c853; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; }
+    button { padding: 14px 28px; background: #00c853; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin: 5px; }
+    .pay { background: #ff0066; }
     .feature { background: #fff; color: #333; padding: 15px; margin: 10px; border-radius: 10px; text-align: left; }
     .feature h3 { margin: 0 0 10px 0; color: #ff0066; }
     .tab { display: inline-block; padding: 10px 20px; background: #ff3385; margin: 5px; border-radius: 20px; cursor: pointer; }
@@ -17,109 +18,47 @@
     .page.active { display: block; }
     .profile { background: #f8f8f8; padding: 10px; margin: 8px 0; border-radius: 8px; }
     .msg { background: #e8f5e9; padding: 8px; margin: 5px 0; border-radius: 8px; }
+    .blur { filter: blur(8px); pointer-events: none; }
   </style>
 </head>
 <body>
   <div id="lock" class="box">
     <h2>🔒 LOVE APP GLOBAL</h2>
     <p><b>PREMIUM LOCKED</b></p>
-    <p>Pay $1 via M-Pesa to unlock</p>
-    <h3>+254 116 624 621</h3>
-    <p>Send screenshot on WhatsApp to get Code</p>
+    <div style="font-size:36px; color:#00c853; font-weight:bold;">$1 ONLY</div>
+    <p>≈ KSh 100</p>
+    
+    <p><b>STEP 1: Pay M-Pesa</b></p>
+    <div style="background:#00c853; color:white; padding:15px; border-radius:10px; font-size:20px; font-weight:bold;">0116624621</div>
+    
+    <p><b>STEP 2: After payment, click below</b></p>
+    <button class="pay" onclick="paid()">✅ I'VE PAID - GET CODE</button>
+    
+    <p style="margin-top:20px;"><b>STEP 3: Enter code to unlock</b></p>
     <input id="code" placeholder="Enter Code Here">
-    <br><br>
+    <br>
     <button onclick="unlock()">Unlock App</button>
     <p id="error" style="color:red;"></p>
   </div>
 
   <div id="app" style="display:none; padding: 15px;">
     <h1 style="text-align: center;">❤️ LOVE APP GLOBAL</h1>
-    
     <div style="text-align: center; margin: 15px 0;">
       <div class="tab active" onclick="showPage('home')">🏠 Home</div>
       <div class="tab" onclick="showPage('chat')">💬 Chat</div>
       <div class="tab" onclick="showPage('match')">❤️ Match</div>
       <div class="tab" onclick="showPage('gifts')">🎁 Gifts</div>
     </div>
-
-    <!-- HOME PAGE -->
     <div id="home" class="page active">
-      <div class="feature">
-        <h3>💕 FIND LOVE NEAR YOU</h3>
-        <p>Connect with singles within 5KM of your location. Works worldwide.</p>
-        <button onclick="showPage('match')">Find Now</button>
-      </div>
-
-      <div class="feature">
-        <h3>🔥 SECRET CHAT</h3>
-        <p>Send messages that disappear after reading. 100% Private & Encrypted.</p>
-        <button onclick="showPage('chat')">Start Chat</button>
-      </div>
-
-      <div class="feature">
-        <h3>🎮 LOVE QUOTES & STORIES</h3>
-        <p>Get daily romantic quotes and real love stories from users.</p>
-        <button onclick="showStory()">Read Stories</button>
-      </div>
-
-      <div class="feature">
-        <h3>📞 SUPPORT 24/7</h3>
-        <p>Need help? Contact us on WhatsApp: <b>+254 116 624 621</b></p>
-        <button onclick="window.location.href='https://wa.me/254116624621'">Contact Support</button>
-      </div>
+      <div class="feature"><h3>💕 FIND LOVE NEAR YOU</h3><p>Connect with singles within 5KM. Works worldwide.</p><button onclick="showPage('match')">Find Now</button></div>
+      <div class="feature"><h3>🔥 SECRET CHAT</h3><p>Messages disappear after reading. 100% Private.</p><button onclick="showPage('chat')">Start Chat</button></div>
+      <div class="feature"><h3>🎮 LOVE QUOTES & STORIES</h3><p>Daily romantic quotes and real love stories.</p><button onclick="showStory()">Read Stories</button></div>
+      <div class="feature"><h3>📞 SUPPORT 24/7</h3><p>WhatsApp: <b>+254 116 624 621</b></p><button onclick="window.location.href='https://wa.me/254116624621'">Contact Support</button></div>
     </div>
-
-    <!-- CHAT PAGE -->
-    <div id="chat" class="page">
-      <div class="feature">
-        <h3>💬 SECRET CHAT</h3>
-        <div class="msg"><b>Sarah:</b> Hey handsome 😘</div>
-        <div class="msg"><b>You:</b> Hi beautiful. How are you?</div>
-        <div class="msg"><b>Sarah:</b> Missing you already ❤️</div>
-        <input id="msgInput" placeholder="Type a message..." style="width:70%">
-        <button onclick="sendMsg()">Send</button>
-        <p style="font-size:12px; color:#666;">*Messages delete after 5 minutes</p>
-      </div>
-    </div>
-
-    <!-- MATCH PAGE -->
-    <div id="match" class="page">
-      <div class="feature">
-        <h3>❤️ PEOPLE NEAR YOU</h3>
-        <div class="profile">
-          <b>Sophia, 23</b> - 2KM away<br>
-          <i>"I love funny and honest people"</i><br>
-          <button onclick="alert('Sophia received your like! Pay $0.50 to chat')">❤️ Like</button>
-        </div>
-        <div class="profile">
-          <b>James, 26</b> - 4KM away<br>
-          <i>"Looking for something serious"</i><br>
-          <button onclick="alert('James received your like! Pay $0.50 to chat')">❤️ Like</button>
-        </div>
-        <div class="profile">
-          <b>Emma, 21</b> - 5KM away<br>
-          <i>"Let's make memories together"</i><br>
-          <button onclick="alert('Emma received your like! Pay $0.50 to chat')">❤️ Like</button>
-        </div>
-        <p style="text-align:center;">Upgrade to Premium to see 50+ more people</p>
-      </div>
-    </div>
-
-    <!-- GIFTS PAGE -->
-    <div id="gifts" class="page">
-      <div class="feature">
-        <h3>🎁 TODAY'S GIFT</h3>
-        <p><b>Love Quote:</b><br>
-        <i>"You are like sugar in my tea, without you life has no taste."</i></p>
-        <br>
-        <p><b>Daily Challenge:</b><br>
-        Text "I like you" to your crush right now. Don't wait for tomorrow!</p>
-        <br>
-        <button onclick="alert('New gift tomorrow! Come back at 6am')">Get Tomorrow's Gift</button>
-      </div>
-    </div>
-
-    <p style="text-align: center; margin-top: 30px; font-size: 12px;">Love App Global v1.0 | Made by ELVICE</p>
+    <div id="chat" class="page"><div class="feature"><h3>💬 SECRET CHAT</h3><div class="msg"><b>Sarah:</b> Hey handsome 😘</div><div class="msg"><b>You:</b> Hi beautiful. How are you?</div><input id="msgInput" placeholder="Type message..." style="width:70%"><button onclick="sendMsg()">Send</button></div></div>
+    <div id="match" class="page"><div class="feature"><h3>❤️ PEOPLE NEAR YOU</h3><div class="profile"><b>Sophia, 23</b> - 2KM away<br><i>"I love funny people"</i><br><button onclick="alert('Sophia received your like!')">❤️ Like</button></div><div class="profile"><b>James, 26</b> - 4KM away<br><i>"Looking for serious"</i><br><button onclick="alert('James received your like!')">❤️ Like</button></div></div></div>
+    <div id="gifts" class="page"><div class="feature"><h3>🎁 TODAY'S GIFT</h3><p><b>Love Quote:</b><br><i>"You are like sugar in my tea, without you life has no taste."</i></p><button onclick="alert('New gift tomorrow!')">Get Tomorrow's Gift</button></div></div>
+    <p style="text-align: center; margin-top: 30px; font-size: 12px;">Love App Global v2.0 | Made by ELVICE</p>
   </div>
 
   <script>
@@ -135,8 +74,11 @@
         document.getElementById('lock').style.display = 'none';
         document.getElementById('app').style.display = 'block';
       } else {
-        document.getElementById('error').innerText = 'Invalid code. Pay +254116624621';
+        document.getElementById('error').innerText = 'Invalid code. Pay first then click "I\'VE PAID"';
       }
+    }
+    function paid() {
+      window.location.href = "https://wa.me/254116624621?text=Nimelipa%20KSh%20100%20kwa%20Love%20App.%20Nipe%20code%20tafadhali.";
     }
     function showPage(pageId) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -146,13 +88,10 @@
     }
     function sendMsg() {
       var msg = document.getElementById('msgInput').value;
-      if(msg) {
-        alert('Message sent: "' + msg + '"\n\nSarah will reply in 2 minutes');
-        document.getElementById('msgInput').value = '';
-      }
+      if(msg) { alert('Message sent: "' + msg + '"\n\nSarah will reply in 2 minutes'); document.getElementById('msgInput').value = ''; }
     }
     function showStory() {
-      alert('LOVE STORY:\n\n"I met her on a bus. I gave her my seat. Today she is my wife."\n\n- John, Kenya\n\nSend yours to win $2 airtime!');
+      alert('LOVE STORY:\n\n"I met her on a bus. I gave her my seat. Today she is my wife."\n\n- John, Kenya');
     }
   </script>
 </body>
