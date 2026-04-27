@@ -1,50 +1,54 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Love App Kenya</title>
+  <title>Love App Global - Download</title>
   <style>
-    body { font-family: sans-serif; text-align: center; padding: 20px; background: #ff0066; color: white; }
-    .box { background: white; color: black; padding: 20px; border-radius: 10px; margin-top: 50px; }
-    input { padding: 12px; width: 80%; margin: 10px 0; font-size: 16px; }
-    button { padding: 14px 28px; background: #00c853; color: white; border: none; border-radius: 8px; font-size: 18px; }
+    body { font-family: sans-serif; margin: 0; background: #ff0066; color: white; text-align: center; padding: 20px; }
+    .box { background: white; color: black; padding: 30px; border-radius: 15px; margin: 20px auto; max-width: 400px; }
+    h1 { font-size: 28px; margin: 0 0 10px 0; }
+    .price { font-size: 36px; color: #00c853; font-weight: bold; margin: 15px 0; }
+    .mpesa { background: #00c853; color: white; padding: 15px; border-radius: 10px; font-size: 20px; font-weight: bold; margin: 20px 0; }
+    .step { text-align: left; margin: 15px 0; }
+    .timer { font-size: 18px; color: #ff0066; font-weight: bold; }
   </style>
 </head>
 <body>
-  <div id="lock" class="box">
-    <h2>🔒 LOVE APP KENYA</h2>
-    <p><b>HAIJALIPIWA</b></p>
-    <p>Lipa KSh 100 kwa M-Pesa</p>
-    <h3>0116624621</h3>
-    <p>Tuma screenshot WhatsApp upate Code</p>
-    <input id="code" placeholder="Weka Code Hapa">
-    <br>
-    <button onclick="unlock()">Fungua App</button>
-    <p id="error" style="color:red;"></p>
-  </div>
-
-  <div id="app" style="display:none;">
-    <h1>❤️ KARIBU LOVE APP</h1>
-    <p>Asante kwa kulipa! App imefunguka.</p>
+  <div class="box">
+    <h1>❤️ LOVE APP GLOBAL</h1>
+    <p><b>Find Love Near You + Secret Chat</b></p>
+    
+    <div class="price">$1 ONLY</div>
+    <p>≈ KSh 100</p>
+    
+    <div class="step">
+      <b>STEP 1:</b> Lipa M-Pesa
+      <div class="mpesa">0116624621</div>
+    </div>
+    
+    <div class="step">
+      <b>STEP 2:</b> Tuma screenshot WhatsApp
+    </div>
+    
+    <div class="step">
+      <b>STEP 3:</b> Utapata Code ya kufungua App
+    </div>
+    
+    <p class="timer">Redirecting to WhatsApp in <span id="count">3</span>s...</p>
   </div>
 
   <script>
-    if(localStorage.getItem('paid') === 'yes') {
-      document.getElementById('lock').style.display = 'none';
-      document.getElementById('app').style.display = 'block';
-    }
-    function unlock() {
-      var code = document.getElementById('code').value;
-      var codes = ['LOVE2026', 'KENYA100', 'ELVICE1', 'PAID'];
-      if(codes.includes(code.toUpperCase())) {
-        localStorage.setItem('paid', 'yes');
-        document.getElementById('lock').style.display = 'none';
-        document.getElementById('app').style.display = 'block';
-      } else {
-        document.getElementById('error').innerText = 'Code si sahihi. Lipa 0116624621';
+    let time = 3;
+    const countEl = document.getElementById('count');
+    const timer = setInterval(() => {
+      time--;
+      countEl.textContent = time;
+      if(time <= 0) {
+        clearInterval(timer);
+        window.location.href = "https://wa.me/254116624621?text=Nataka%20code%20ya%20Love%20App";
       }
-    }
+    }, 1000);
   </script>
 </body>
-</html>
+</html> 
