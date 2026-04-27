@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love App Kenya</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 20px; background: #ff0066; color: white; }
+    .box { background: white; color: black; padding: 20px; border-radius: 10px; margin-top: 50px; }
+    input { padding: 12px; width: 80%; margin: 10px 0; font-size: 16px; }
+    button { padding: 14px 28px; background: #00c853; color: white; border: none; border-radius: 8px; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <div id="lock" class="box">
+    <h2>🔒 LOVE APP KENYA</h2>
+    <p><b>HAIJALIPIWA</b></p>
+    <p>Lipa KSh 100 kwa M-Pesa</p>
+    <h3>0116624621</h3>
+    <p>Tuma screenshot WhatsApp upate Code</p>
+    <input id="code" placeholder="Weka Code Hapa">
+    <br>
+    <button onclick="unlock()">Fungua App</button>
+    <p id="error" style="color:red;"></p>
+  </div>
+
+  <div id="app" style="display:none;">
+    <h1>❤️ KARIBU LOVE APP</h1>
+    <p>Asante kwa kulipa! App imefunguka.</p>
+  </div>
+
+  <script>
+    if(localStorage.getItem('paid') === 'yes') {
+      document.getElementById('lock').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+    }
+    function unlock() {
+      var code = document.getElementById('code').value;
+      var codes = ['LOVE2026', 'KENYA100', 'ELVICE1', 'PAID'];
+      if(codes.includes(code.toUpperCase())) {
+        localStorage.setItem('paid', 'yes');
+        document.getElementById('lock').style.display = 'none';
+        document.getElementById('app').style.display = 'block';
+      } else {
+        document.getElementById('error').innerText = 'Code si sahihi. Lipa 0116624621';
+      }
+    }
+  </script>
+</body>
+</html>
